@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Chauhan Computer - Laptop & Computer Store',
     description: 'Shop new and used laptops, desktops, and repair services in Jaipur',
-    type: 'business.business',
+    type: 'website',
     locale: 'en_IN',
   },
   icons: {
