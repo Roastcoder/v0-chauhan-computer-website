@@ -7,8 +7,9 @@ import { FloatingButtons } from '@/components/FloatingButtons';
 import { ProductCard } from '@/components/ProductCard';
 import { ServiceCard } from '@/components/ServiceCard';
 import { TestimonialCard } from '@/components/TestimonialCard';
-import { Menu, X, Smartphone, Zap, Award, DollarSign, Wrench, Shield, Cpu, Headphones } from 'lucide-react';
+import { Menu, X, Smartphone, Zap, Award, DollarSign, Wrench, Shield, Cpu, Headphones, ShoppingBag } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Home() {
@@ -153,7 +154,11 @@ export default function Home() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-6 items-center">
-            <button onClick={() => scrollToSection('products')} className="text-sm hover:text-primary transition">Products</button>
+            <button onClick={() => scrollToSection('products')} className="text-sm hover:text-primary transition">Featured</button>
+            <Link href="/products" className="text-sm hover:text-primary transition flex items-center gap-1">
+              <ShoppingBag size={16} />
+              All Products
+            </Link>
             <button onClick={() => scrollToSection('services')} className="text-sm hover:text-primary transition">Services</button>
             <button onClick={() => scrollToSection('testimonials')} className="text-sm hover:text-primary transition">Reviews</button>
             <button onClick={() => scrollToSection('contact')} className="text-sm hover:text-primary transition">Contact</button>
@@ -174,7 +179,11 @@ export default function Home() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-border p-4 flex flex-col gap-3">
-            <button onClick={() => scrollToSection('products')} className="text-left text-sm hover:text-primary">Products</button>
+            <button onClick={() => scrollToSection('products')} className="text-left text-sm hover:text-primary">Featured</button>
+            <Link href="/products" className="text-left text-sm hover:text-primary flex items-center gap-1">
+              <ShoppingBag size={16} />
+              All Products
+            </Link>
             <button onClick={() => scrollToSection('services')} className="text-left text-sm hover:text-primary">Services</button>
             <button onClick={() => scrollToSection('testimonials')} className="text-left text-sm hover:text-primary">Reviews</button>
             <button onClick={() => scrollToSection('contact')} className="text-left text-sm hover:text-primary">Contact</button>
@@ -255,8 +264,18 @@ export default function Home() {
       {/* Featured Products Section */}
       <section id="products" className="w-full py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">Featured Products</h2>
-          <p className="text-muted-foreground mb-8">Latest and most popular laptops and computers</p>
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold mb-2">Featured Products</h2>
+              <p className="text-muted-foreground">Latest and most popular laptops and computers</p>
+            </div>
+            <Link href="/products">
+              <Button className="bg-primary hover:bg-primary/90 hidden sm:flex gap-2">
+                <ShoppingBag size={18} />
+                View All Products
+              </Button>
+            </Link>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <ProductCard
